@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vyoma Software — GST Billing, School ERP, Ecommerce & Custom Software Marketplace</title>
+<meta name="description" content="Vyoma Software is a marketplace for ready-made GST billing software, invoice software, school management systems, ecommerce websites, news apps and custom business software. Live demos, instant checkout, license delivery.">
+<meta name="keywords" content="GST billing software, invoice software, school management software, ecommerce website, android app development, business software India">
+<meta name="author" content="Vyoma Software">
+<meta property="og:title" content="Vyoma Software — Ready-Made Business Software Marketplace">
+<meta property="og:description" content="Buy GST billing, school ERP, ecommerce and custom software with live demos and instant delivery.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230F1729'/%3E%3Cpath d='M28 30h44v10H38v10h30v10H38v10h34v10H28z' fill='%23E8A33D'/%3E%3C/svg%3E">
+
+<!-- Google Fonts: Sora for display headings, Inter for body text, IBM Plex Mono for prices/ledger figures -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   Palette is built around a "ledger / invoice" motif since the
+   flagship product line is GST billing & invoicing software.
+   ============================================================ */
+:root{
+  --ink:#0F1729;          /* deep navy ink - dark bg / dark text */
+  --ink-soft:#1B263B;
+  --paper:#F6F5F1;        /* warm ledger paper - light bg */
+  --paper-card:#FFFFFF;
+  --line:#E4E1D8;         /* hairline rule color, light mode */
+  --gold:#E8A33D;         /* primary accent - wax-seal amber */
+  --gold-deep:#C9832A;
+  --teal:#0D7377;         /* secondary accent */
+  --teal-deep:#0A5C60;
+  --ok:#2E9E5B;
+  --err:#D64545;
+  --text:#171B24;
+  --text-dim:#5B6472;
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow:0 10px 30px -12px rgba(15,23,41,.18);
+  --shadow-soft:0 4px 14px -6px rgba(15,23,41,.12);
+  --maxw:1200px;
+  --font-display:'Sora',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+[data-theme="dark"]{
+  --paper:#0B1220;
+  --paper-card:#141D2E;
+  --line:#26314A;
+  --text:#EDEFF3;
+  --text-dim:#93A0B4;
+  --shadow:0 10px 34px -10px rgba(0,0,0,.55);
+  --shadow-soft:0 4px 16px -8px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.55;
+  transition:background .3s ease,color .3s ease;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px;}
+h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-0.01em;color:var(--text);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-deep);display:flex;align-items:center;gap:8px;margin-bottom:10px;font-weight:600;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold-deep);display:inline-block;}
+.section{padding:88px 0;}
+.section-head{max-width:640px;margin-bottom:44px;}
+.section-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;margin-bottom:12px;}
+.section-head p{color:var(--text-dim);font-size:1.02rem;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 24px;border-radius:999px;font-weight:600;font-size:.92rem;
+  border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease,background .2s;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--gold);color:#171308;box-shadow:0 8px 20px -8px rgba(232,163,61,.6);}
+.btn-primary:hover{background:var(--gold-deep);box-shadow:0 10px 24px -8px rgba(232,163,61,.75);}
+.btn-outline{background:transparent;border-color:var(--line);color:var(--text);}
+.btn-outline:hover{border-color:var(--gold-deep);color:var(--gold-deep);}
+.btn-teal{background:var(--teal);color:#fff;}
+.btn-teal:hover{background:var(--teal-deep);}
+.btn-sm{padding:9px 16px;font-size:.8rem;}
+.btn-block{width:100%;}
+.btn-danger{background:transparent;border-color:var(--err);color:var(--err);}
+.btn-danger:hover{background:var(--err);color:#fff;}
+.pill{
+  font-family:var(--font-mono);font-size:.7rem;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--line);color:var(--text-dim);font-weight:600;
+}
+
+/* ---------------- NAVBAR ---------------- */
+header.nav{
+  position:sticky;top:0;z-index:500;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.15rem;}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+[data-theme="dark"] .logo-mark{background:var(--gold);}
+.logo-mark svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--text-dim);transition:color .2s;position:relative;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a.active{color:var(--gold-deep);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.theme-toggle{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper-card);
+  display:flex;align-items:center;justify-content:center;transition:border-color .2s;
+}
+.theme-toggle:hover{border-color:var(--gold-deep);}
+.theme-toggle svg{width:18px;height:18px;}
+.icon-sun{display:none;}
+[data-theme="dark"] .icon-sun{display:block;}
+[data-theme="dark"] .icon-moon{display:none;}
+.hamburger{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper-card);align-items:center;justify-content:center;}
+.hamburger svg{width:18px;height:18px;}
+.mobile-panel{
+  display:none;position:fixed;inset:72px 0 0 0;background:var(--paper);z-index:480;
+  padding:30px 24px;flex-direction:column;gap:22px;overflow-y:auto;
+}
+.mobile-panel.open{display:flex;}
+.mobile-panel a{font-size:1.15rem;font-weight:600;padding:10px 0;border-bottom:1px solid var(--line);}
+
+@media (max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .nav-right .btn{display:none;}
+}
+
+/* ---------------- HERO ---------------- */
+.hero{padding:80px 0 60px;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;}
+@media (max-width:960px){.hero-grid{grid-template-columns:1fr;} .hero{padding:50px 0 40px;}}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;line-height:1.08;margin-bottom:20px;}
+.hero h1 .accent{color:var(--gold-deep);}
+.hero p.lead{font-size:1.08rem;color:var(--text-dim);max-width:520px;margin-bottom:30px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+.hero-stats div strong{font-family:var(--font-mono);font-size:1.5rem;display:block;color:var(--text);}
+.hero-stats div span{font-size:.8rem;color:var(--text-dim);}
+
+/* Animated "receipt" illustration made purely from CSS/SVG */
+.receipt-wrap{position:relative;display:flex;justify-content:center;}
+.receipt{
+  width:280px;background:var(--paper-card);border-radius:6px;
+  box-shadow:var(--shadow);padding:26px 22px 34px;position:relative;
+  font-family:var(--font-mono);font-size:.78rem;color:var(--text);
+  animation:float 5s ease-in-out infinite;
+  clip-path:polygon(0 0,100% 0,100% 97%,95% 100%,90% 97%,85% 100%,80% 97%,75% 100%,70% 97%,65% 100%,60% 97%,55% 100%,50% 97%,45% 100%,40% 97%,35% 100%,30% 97%,25% 100%,20% 97%,15% 100%,10% 97%,5% 100%,0 97%);
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1.5deg);}50%{transform:translateY(-12px) rotate(1deg);}}
+.receipt .r-head{text-align:center;margin-bottom:16px;}
+.receipt .r-head b{display:block;font-family:var(--font-display);font-size:1rem;letter-spacing:.02em;}
+.receipt .r-head span{color:var(--text-dim);font-size:.68rem;}
+.receipt .r-line{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);}
+.receipt .r-total{display:flex;justify-content:space-between;padding-top:12px;margin-top:8px;border-top:1px solid var(--text);font-weight:600;}
+.receipt .r-total .amt{color:var(--gold-deep);}
+.receipt .r-badge{
+  position:absolute;top:-14px;right:-14px;background:var(--teal);color:#fff;
+  width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:.72rem;text-align:center;box-shadow:var(--shadow-soft);
+  transform:rotate(8deg);
+}
+.orbit-card{
+  position:absolute;background:var(--paper-card);border:1px solid var(--line);border-radius:10px;
+  padding:10px 14px;font-size:.72rem;box-shadow:var(--shadow-soft);display:flex;align-items:center;gap:8px;
+  font-weight:600;
+}
+.orbit-card svg{width:14px;height:14px;color:var(--ok);flex-shrink:0;}
+.orbit-1{top:6%;left:-6%;animation:float 6s ease-in-out infinite;animation-delay:.4s;}
+.orbit-2{bottom:10%;right:-8%;animation:float 5.5s ease-in-out infinite;animation-delay:.9s;}
+@media (max-width:600px){.orbit-card{display:none;}}
+
+/* ---------------- CATEGORIES ---------------- */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.cat-card{
+  background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 22px;transition:transform .22s ease,box-shadow .22s ease,border-color .22s;
+}
+.cat-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--gold-deep);}
+.cat-icon{
+  width:44px;height:44px;border-radius:11px;background:rgba(232,163,61,.14);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.cat-icon svg{width:22px;height:22px;color:var(--gold-deep);}
+.cat-card h3{font-size:1.05rem;margin-bottom:10px;}
+.cat-card ul{list-style:none;}
+.cat-card li{font-size:.85rem;color:var(--text-dim);padding:3px 0;position:relative;padding-left:14px;}
+.cat-card li::before{content:"—";position:absolute;left:0;color:var(--gold-deep);}
+
+/* ---------------- FILTER BAR ---------------- */
+.filter-bar{
+  display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:34px;
+  background:var(--paper-card);border:1px solid var(--line);padding:16px;border-radius:var(--radius);
+}
+.filter-bar input[type="text"],.filter-bar select{
+  padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--paper);
+  color:var(--text);font-family:var(--font-body);font-size:.88rem;min-width:150px;
+}
+.filter-bar input[type="text"]{flex:1;min-width:200px;}
+
+/* ---------------- PRODUCT GRID ---------------- */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;}
+.p-card{
+  background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;
+}
+.p-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.p-thumb{height:160px;background:var(--ink);position:relative;overflow:hidden;}
+.p-thumb img{width:100%;height:100%;object-fit:cover;}
+.p-cat-tag{
+  position:absolute;top:10px;left:10px;background:rgba(15,23,41,.7);color:#fff;
+  font-family:var(--font-mono);font-size:.65rem;padding:4px 9px;border-radius:999px;
+}
+.p-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.p-body h3{font-size:1.02rem;}
+.p-desc{font-size:.83rem;color:var(--text-dim);flex:1;}
+.p-meta{display:flex;justify-content:space-between;align-items:center;margin-top:4px;}
+.p-price{font-family:var(--font-mono);font-weight:600;font-size:1.1rem;color:var(--gold-deep);}
+.p-rating{font-size:.78rem;color:var(--text-dim);display:flex;align-items:center;gap:4px;}
+.p-rating svg{width:13px;height:13px;color:var(--gold);}
+.p-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.p-actions .btn{flex:1;padding:9px 10px;font-size:.76rem;}
+.empty-state{
+  text-align:center;padding:60px 20px;color:var(--text-dim);border:1px dashed var(--line);border-radius:var(--radius);
+}
+
+/* ---------------- MODALS ---------------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(10,14,22,.6);backdrop-filter:blur(3px);
+  display:none;align-items:flex-start;justify-content:center;z-index:900;padding:40px 16px;overflow-y:auto;
+}
+.overlay.open{display:flex;}
+.modal{
+  background:var(--paper-card);border-radius:var(--radius);max-width:640px;width:100%;
+  padding:30px;position:relative;box-shadow:var(--shadow);margin:auto;
+  animation:pop .22s ease;
+}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98);}to{opacity:1;transform:none;}}
+.modal-close{
+  position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;
+}
+.modal h2{font-size:1.4rem;margin-bottom:6px;padding-right:30px;}
+.modal-sub{color:var(--text-dim);font-size:.85rem;margin-bottom:20px;}
+.modal-gallery{display:flex;gap:10px;overflow-x:auto;margin-bottom:20px;}
+.modal-gallery img{width:150px;height:100px;object-fit:cover;border-radius:8px;flex-shrink:0;border:1px solid var(--line);}
+.modal-video{aspect-ratio:16/9;width:100%;border-radius:10px;overflow:hidden;margin-bottom:20px;background:var(--ink);}
+.modal-video iframe{width:100%;height:100%;border:0;}
+.modal-section-title{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin:18px 0 8px;}
+.tag-list{display:flex;gap:8px;flex-wrap:wrap;}
+.feat-list{list-style:none;display:grid;gap:8px;}
+.feat-list li{display:flex;gap:8px;font-size:.88rem;align-items:flex-start;}
+.feat-list svg{width:15px;height:15px;color:var(--ok);flex-shrink:0;margin-top:3px;}
+.modal-price-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:20px 0;}
+.modal-price-row .amt{font-family:var(--font-mono);font-size:1.6rem;font-weight:600;color:var(--gold-deep);}
+.modal-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{padding:12px 0;display:flex;justify-content:space-between;font-weight:600;font-size:.9rem;cursor:pointer;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:.85rem;color:var(--text-dim);}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:12px;}
+.faq-item.open .faq-q svg{transform:rotate(45deg);}
+.faq-q svg{width:16px;height:16px;transition:transform .2s;}
+
+/* form elements shared across modals */
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:6px;color:var(--text-dim);}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--paper);color:var(--text);font-family:var(--font-body);font-size:.9rem;
+}
+.form-group textarea{resize:vertical;min-height:70px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media (max-width:520px){.form-row{grid-template-columns:1fr;}}
+.form-msg{font-size:.82rem;padding:10px 12px;border-radius:var(--radius-sm);margin-bottom:12px;display:none;}
+.form-msg.show{display:block;}
+.form-msg.err{background:rgba(214,69,69,.1);color:var(--err);}
+.form-msg.ok{background:rgba(46,158,91,.12);color:var(--ok);}
+.auth-switch{text-align:center;margin-top:14px;font-size:.85rem;color:var(--text-dim);}
+.auth-switch a{color:var(--gold-deep);font-weight:600;}
+
+/* ---------------- ADMIN / DASHBOARD ---------------- */
+.dash-hidden{display:none;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:36px;}
+.stat-card{background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+.stat-card span{font-size:.78rem;color:var(--text-dim);display:block;margin-bottom:8px;}
+.stat-card strong{font-family:var(--font-mono);font-size:1.9rem;}
+.admin-tabs{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap;border-bottom:1px solid var(--line);}
+.admin-tab{padding:10px 4px;font-weight:600;font-size:.88rem;color:var(--text-dim);border-bottom:2px solid transparent;margin-right:18px;}
+.admin-tab.active{color:var(--gold-deep);border-color:var(--gold-deep);}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);}
+table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:640px;}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);}
+th{font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);background:var(--paper);}
+tr:last-child td{border-bottom:none;}
+.status-badge{font-size:.72rem;padding:3px 10px;border-radius:999px;font-weight:600;}
+.status-paid{background:rgba(46,158,91,.15);color:var(--ok);}
+.status-pending{background:rgba(232,163,61,.18);color:var(--gold-deep);}
+.row-actions{display:flex;gap:8px;}
+.icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;}
+.icon-btn svg{width:14px;height:14px;}
+.gate{max-width:380px;margin:40px auto;text-align:center;padding:40px 30px;background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);}
+
+/* ---------------- BLOG ---------------- */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.blog-card{background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .2s;}
+.blog-card:hover{transform:translateY(-4px);}
+.blog-img{height:150px;background:linear-gradient(135deg,var(--ink),var(--teal-deep));}
+.blog-body{padding:20px;}
+.blog-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--gold-deep);text-transform:uppercase;letter-spacing:.06em;}
+.blog-body h3{font-size:1rem;margin:10px 0;}
+.blog-body p{font-size:.85rem;color:var(--text-dim);}
+.blog-read{font-size:.82rem;font-weight:600;color:var(--teal);margin-top:12px;display:inline-block;}
+
+/* ---------------- PRICING ---------------- */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;}
+.price-card{background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;position:relative;}
+.price-card.featured{border-color:var(--gold-deep);box-shadow:var(--shadow);}
+.price-card.featured::before{content:"Most Popular";position:absolute;top:-12px;left:26px;background:var(--gold);color:#171308;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:999px;}
+.price-card h3{font-size:1.1rem;margin-bottom:6px;}
+.price-card .price{font-family:var(--font-mono);font-size:2rem;font-weight:700;margin:14px 0;}
+.price-card .price span{font-size:.85rem;color:var(--text-dim);font-weight:400;}
+.price-card ul{list-style:none;margin:18px 0;display:grid;gap:10px;}
+.price-card li{font-size:.86rem;display:flex;gap:8px;}
+.price-card li svg{width:15px;height:15px;color:var(--ok);flex-shrink:0;margin-top:2px;}
+
+/* ---------------- CONTACT ---------------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+@media (max-width:840px){.contact-grid{grid-template-columns:1fr;}}
+.contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;}
+.contact-item .ic{width:40px;height:40px;border-radius:10px;background:rgba(13,115,119,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-item .ic svg{width:19px;height:19px;color:var(--teal);}
+.contact-item h4{font-size:.95rem;margin-bottom:3px;}
+.contact-item p{font-size:.85rem;color:var(--text-dim);}
+.map-box{
+  height:100%;min-height:260px;border-radius:var(--radius);border:1px solid var(--line);
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px) 0 0/26px 26px,
+    linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/26px 26px,
+    var(--paper-card);
+  display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:.85rem;text-align:center;
+}
+.whatsapp-float{
+  position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);z-index:400;
+  transition:transform .2s;
+}
+.whatsapp-float:hover{transform:scale(1.08);}
+.whatsapp-float svg{width:26px;height:26px;color:#fff;}
+
+/* ---------------- FOOTER ---------------- */
+footer{background:var(--ink);color:#C9D2E3;padding:60px 0 26px;margin-top:40px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+@media (max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;}}
+footer h4{color:#fff;font-size:.9rem;margin-bottom:14px;}
+footer ul{list-style:none;display:grid;gap:9px;}
+footer ul a{color:#96A2B8;font-size:.85rem;}
+footer ul a:hover{color:var(--gold);}
+footer p.desc{color:#96A2B8;font-size:.85rem;max-width:280px;margin-top:12px;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.78rem;color:#7C8AA2;}
+
+/* small helpers */
+.hide{display:none !important;}
+.mt-40{margin-top:40px;}
+.center-text{text-align:center;}
+.spinner{width:26px;height:26px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--gold-deep);animation:spin .8s linear infinite;margin:30px auto;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2"><path d="M4 4h16v4H8v4h10v4H8v4h12v0"/></svg>
+      </span>
+      Vyoma <span style="color:var(--gold-deep)">Software</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#software">Software</a>
+      <a href="#categories">Categories</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="btn btn-outline btn-sm" id="navLoginBtn" onclick="openAuthModal()">Login</button>
+      <button class="btn btn-primary btn-sm hide" id="navDashBtn" onclick="scrollToId('dashboard')">Dashboard</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#home" onclick="closeMobile()">Home</a>
+    <a href="#software" onclick="closeMobile()">Software</a>
+    <a href="#categories" onclick="closeMobile()">Categories</a>
+    <a href="#pricing" onclick="closeMobile()">Pricing</a>
+    <a href="#blog" onclick="closeMobile()">Blog</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <button class="btn btn-primary btn-block" onclick="closeMobile(); openAuthModal();">Login / Register</button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Ready-made & custom business software</div>
+      <h1>Powerful Software Solutions <span class="accent">For Your Business</span></h1>
+      <p class="lead">Vyoma Software ready-made business software banata aur bechta hai — jaise GST billing software, school management software, ecommerce website, news app aur custom websites. Har software ki live demo pehle dekh sakte hain, uske baad hi kharido. Setup, installation aur 1 saal ka support har purchase ke saath free milta hai.</p>
+      <div class="hero-cta">
+        <a href="#software" class="btn btn-primary">Explore Software</a>
+        <a href="#contact" class="btn btn-outline">Request Custom Software</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>1,200+</strong><span>Businesses served</span></div>
+        <div><strong>8</strong><span>Software categories</span></div>
+        <div><strong>4.8★</strong><span>Average rating</span></div>
+      </div>
+    </div>
+    <div class="receipt-wrap">
+      <div class="receipt">
+        <div class="r-badge">GST<br>Ready</div>
+        <div class="r-head"><b>TAX INVOICE</b><span>#INV-08231 · Vyoma Billing</span></div>
+        <div class="r-line"><span>Billing Software License</span><span>₹4,999</span></div>
+        <div class="r-line"><span>Setup & Onboarding</span><span>Free</span></div>
+        <div class="r-line"><span>GST (18%)</span><span>₹899</span></div>
+        <div class="r-total"><span>Total Due</span><span class="amt">₹5,898</span></div>
+      </div>
+      <div class="orbit-card orbit-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Instant Activation</div>
+      <div class="orbit-card orbit-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Free Live Demo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CATEGORIES
+============================================================ -->
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Browse by category</div>
+      <h2>Software built for every desk in your business</h2>
+      <p>Neeche 5 categories di gayi hain. Har category me alag-alag software hai — jaise dukaan ke liye billing software, school ke liye management system, ya online store ke liye ecommerce website. Category par click karke us type ke saare software dekh sakte hain.</p>
+    </div>
+    <div class="cat-grid" id="categoryGrid"><!-- filled by JS from CATEGORY_DATA --></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRODUCT LISTING
+============================================================ -->
+<section class="section" id="software" style="background:var(--paper-card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Marketplace</div>
+      <h2>Explore our software</h2>
+      <p>Yahan saare software list hain jo aap abhi kharid sakte hain. Naam se search karo, category chuno ya price ke hisaab se filter lagao. "Details" par click karke poori jankari (features, video, screenshots) dekh sakte hain, aur "Buy Now" se order place kar sakte hain.</p>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="Search software (e.g. GST, School, Ecommerce)…" oninput="applyFilters()">
+      <select id="categoryFilter" onchange="applyFilters()">
+        <option value="">All Categories</option>
+        <option value="Business Software">Business Software</option>
+        <option value="Education Software">Education Software</option>
+        <option value="Media Software">Media Software</option>
+        <option value="Ecommerce">Ecommerce</option>
+        <option value="Healthcare">Healthcare</option>
+      </select>
+      <select id="priceFilter" onchange="applyFilters()">
+        <option value="">Any Price</option>
+        <option value="0-3000">Under ₹3,000</option>
+        <option value="3000-8000">₹3,000 – ₹8,000</option>
+        <option value="8000-999999">₹8,000+</option>
+      </select>
+    </div>
+    <div id="productGrid" class="product-grid">
+      <div class="spinner" id="productSpinner"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+============================================================ -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Simple pricing</div>
+      <h2>Buy once, own forever — or subscribe for support</h2>
+      <p>Ek baar payment karo, software hamesha ke liye aapka. Har plan ke saath source code milta hai, 1 saal free update aur WhatsApp par support milta hai. Agar off-the-shelf software me aapka kaam nahi banta, to Custom plan chuno — hum aapki zarurat ke hisaab se banayenge.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <p style="color:var(--text-dim);font-size:.85rem;">Single software license</p>
+        <div class="price">₹2,999<span>/one-time</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>1 software product</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Basic setup guide</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Email support</li>
+        </ul>
+        <a href="#software" class="btn btn-outline btn-block">Browse Software</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Business</h3>
+        <p style="color:var(--text-dim);font-size:.85rem;">Most businesses choose this</p>
+        <div class="price">₹7,999<span>/one-time</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Any 1 premium software</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Free installation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Priority WhatsApp support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>1 year free updates</li>
+        </ul>
+        <a href="#software" class="btn btn-primary btn-block">Browse Software</a>
+      </div>
+      <div class="price-card">
+        <h3>Custom</h3>
+        <p style="color:var(--text-dim);font-size:.85rem;">Built to your requirement</p>
+        <div class="price">Let's Talk</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Custom website / app</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Dedicated developer</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Source code ownership</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-block">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAYMENT METHODS STRIP
+============================================================ -->
+<section style="padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-card);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;">
+    <span style="font-size:.8rem;color:var(--text-dim);font-weight:600;">Accepted payments:</span>
+    <span class="pill">UPI</span>
+    <span class="pill">Google Pay</span>
+    <span class="pill">PhonePe</span>
+    <span class="pill">Razorpay</span>
+    <span class="pill">Net Banking</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOG
+============================================================ -->
+<section class="section" id="blog">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">From the blog</div>
+      <h2>Guides for growing your business digitally</h2>
+      <p>Yahan simple bhasha me articles hain jo batate hain ki sahi software kaise chuno aur apne business ko online kaise le jaayein.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-img"></div>
+        <div class="blog-body">
+          <span class="blog-tag">Billing</span>
+          <h3>Best Billing Software For Small Business</h3>
+          <p>Apni dukaan ke liye sahi GST billing software kaise chunein — kaunse features zaroori hain, kya dekhna chahiye price me aur stock kaise sync hota hai, sab simple bhasha me.</p>
+          <span class="blog-read">Read article →</span>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-img" style="background:linear-gradient(135deg,var(--teal-deep),var(--gold-deep));"></div>
+        <div class="blog-body">
+          <span class="blog-tag">Education</span>
+          <h3>How School Management Software Helps Schools</h3>
+          <p>School digital karne se pehle kya check karna chahiye — attendance, fees collection aur report card banane wala software kaise select karein.</p>
+          <span class="blog-read">Read article →</span>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-img" style="background:linear-gradient(135deg,var(--gold-deep),var(--ink));"></div>
+        <div class="blog-body">
+          <span class="blog-tag">Growth</span>
+          <h3>Digital Business Growth Tips For 2026</h3>
+          <p>Bina bade budget ke apna business online kaise le jaayein — 5 aasan tarike jo chote business owner already use kar rahe hain.</p>
+          <span class="blog-read">Read article →</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="section" id="contact" style="background:var(--paper-card);border-top:1px solid var(--line);">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get in touch</div>
+      <h2 style="margin-bottom:10px;">Need a custom build or a quick question?</h2>
+      <p style="color:var(--text-dim);margin-bottom:20px;">Koi bhi sawal ho, demo dekhna ho ya custom software chahiye — neeche diye number, email ya WhatsApp par contact karein. Hum jaldi reply karte hain.</p>
+      <div class="contact-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 005 5L13 14l5 2v4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 012-2z"/></svg></span>
+        <div><h4>Call us</h4><p>+91 98765 43210</p></div>
+      </div>
+      <div class="contact-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 4l8 8 8-8"/></svg></span>
+        <div><h4>Email us</h4><p>hello@vyomasoftware.example</p></div>
+      </div>
+      <div class="contact-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 11.5a8.5 8.5 0 10-13.7 6.8L4 21l2.9-2.6a8.5 8.5 0 0013.6-6.9z"/></svg></span>
+        <div><h4>WhatsApp</h4><p>Chat instantly for demos & pricing</p></div>
+      </div>
+      <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="btn btn-teal mt-40">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 11.5a8.5 8.5 0 10-13.7 6.8L4 21l2.9-2.6a8.5 8.5 0 0013.6-6.9z"/></svg>
+        Message us on WhatsApp
+      </a>
+    </div>
+    <div class="map-box">
+      Map placeholder — embed your Google Maps iframe here<br>(replace .map-box with an &lt;iframe&gt;)
+    </div>
+  </div>
+</section>
+
+<a class="whatsapp-float" href="https://wa.me/919876543210" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.7-.8c.2-.3.4-.2.7-.1l1.8.9c.2.1.4.2.5.3.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<!-- ============================================================
+     CUSTOMER DASHBOARD (visible after login)
+============================================================ -->
+<section class="section dash-hidden" id="dashboard">
+  <div class="wrap">
+    <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;">
+      <div>
+        <div class="eyebrow">My account</div>
+        <h2 id="custWelcome">Welcome back</h2>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="logout()">Log out</button>
+    </div>
+    <h3 style="margin-bottom:14px;font-size:1rem;">Purchased software & orders</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Software</th><th>Order Date</th><th>Payment</th><th>Download</th><th>License Key</th></tr></thead>
+        <tbody id="custOrdersBody"><tr><td colspan="5" style="color:var(--text-dim);">No orders yet — browse the marketplace above.</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ADMIN PANEL (visible only to admin email)
+============================================================ -->
+<section class="section dash-hidden" id="adminPanel" style="background:var(--paper-card);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;">
+      <div>
+        <div class="eyebrow">Admin</div>
+        <h2>Store dashboard</h2>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="openProductForm()">+ Add Software</button>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><span>Total Products</span><strong id="statProducts">0</strong></div>
+      <div class="stat-card"><span>Total Customers</span><strong id="statCustomers">0</strong></div>
+      <div class="stat-card"><span>Total Orders</span><strong id="statOrders">0</strong></div>
+      <div class="stat-card"><span>Total Revenue</span><strong id="statRevenue">₹0</strong></div>
+    </div>
+
+    <div class="admin-tabs">
+      <div class="admin-tab active" data-tab="products" onclick="switchAdminTab('products')">Software Management</div>
+      <div class="admin-tab" data-tab="orders" onclick="switchAdminTab('orders')">Orders</div>
+    </div>
+
+    <div id="adminTabProducts">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Rating</th><th>Actions</th></tr></thead>
+          <tbody id="adminProductsBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="adminTabOrders" class="hide">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Customer</th><th>Software</th><th>Payment Status</th><th>Order Date</th><th>Transaction ID</th></tr></thead>
+          <tbody id="adminOrdersBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:#fff;"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2"><path d="M4 4h16v4H8v4h10v4H8v4h12v0"/></svg></span>Vyoma Software</div>
+        <p class="desc">Ready-made billing, education, ecommerce and media software for growing businesses — plus custom builds when off-the-shelf isn't enough.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul><li><a href="#software">Browse Software</a></li><li><a href="#categories">Categories</a></li><li><a href="#pricing">Pricing</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li><li><a href="#" onclick="openAuthModal();return false;">Login</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Vyoma Software. All rights reserved.</span>
+      <span>Made for businesses across India 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     PRODUCT DETAILS MODAL
+============================================================ -->
+<div class="overlay" id="productModalOverlay" onclick="closeOnOverlay(event,'productModalOverlay')">
+  <div class="modal" style="max-width:720px;">
+    <button class="modal-close" onclick="closeModal('productModalOverlay')">✕</button>
+    <div id="productModalBody"><!-- filled by JS --></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     AUTH MODAL (Login / Register)
+============================================================ -->
+<div class="overlay" id="authModalOverlay" onclick="closeOnOverlay(event,'authModalOverlay')">
+  <div class="modal" style="max-width:400px;">
+    <button class="modal-close" onclick="closeModal('authModalOverlay')">✕</button>
+    <h2 id="authTitle">Welcome back</h2>
+    <p class="modal-sub" id="authSub">Log in to view your orders and licenses</p>
+    <div class="form-msg" id="authMsg"></div>
+    <form id="authForm" onsubmit="handleAuthSubmit(event)">
+      <div class="form-group hide" id="nameFieldGroup">
+        <label>Full Name</label>
+        <input type="text" id="authName" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="authEmail" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="authPassword" required placeholder="••••••••" minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="authSubmitBtn">Log In</button>
+    </form>
+    <p class="auth-switch" id="authSwitchText">Don't have an account? <a href="#" onclick="toggleAuthMode(event)">Sign up</a></p>
+  </div>
+</div>
+
+<!-- ============================================================
+     ADMIN PRODUCT ADD/EDIT MODAL
+============================================================ -->
+<div class="overlay" id="productFormOverlay" onclick="closeOnOverlay(event,'productFormOverlay')">
+  <div class="modal" style="max-width:600px;">
+    <button class="modal-close" onclick="closeModal('productFormOverlay')">✕</button>
+    <h2 id="pfTitle">Add New Software</h2>
+    <p class="modal-sub">Fields marked * are required</p>
+    <div class="form-msg" id="pfMsg"></div>
+    <form id="productForm" onsubmit="handleProductFormSubmit(event)">
+      <input type="hidden" id="pfId">
+      <div class="form-row">
+        <div class="form-group"><label>Software Name *</label><input type="text" id="pfName" required></div>
+        <div class="form-group"><label>Category *</label>
+          <select id="pfCategory" required>
+            <option value="Business Software">Business Software</option>
+            <option value="Education Software">Education Software</option>
+            <option value="Media Software">Media Software</option>
+            <option value="Ecommerce">Ecommerce</option>
+            <option value="Healthcare">Healthcare</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Description *</label><textarea id="pfDescription" required></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Price (₹) *</label><input type="number" id="pfPrice" required min="0"></div>
+        <div class="form-group"><label>Rating (0–5)</label><input type="number" id="pfRating" step="0.1" min="0" max="5" value="4.5"></div>
+      </div>
+      <div class="form-group"><label>Image URL *</label><input type="url" id="pfImage" required placeholder="https://..."></div>
+      <div class="form-row">
+        <div class="form-group"><label>Demo Video URL (YouTube embed)</label><input type="url" id="pfVideo" placeholder="https://youtube.com/embed/..."></div>
+        <div class="form-group"><label>Live Demo URL</label><input type="url" id="pfDemo" placeholder="https://..."></div>
+      </div>
+      <div class="form-group"><label>Download URL</label><input type="url" id="pfDownload" placeholder="https://..."></div>
+      <div class="form-row">
+        <div class="form-group"><label>Features (comma separated)</label><input type="text" id="pfFeatures" placeholder="GST invoicing, Inventory, Reports"></div>
+        <div class="form-group"><label>Technology Used</label><input type="text" id="pfTech" placeholder="HTML, JS, Firebase"></div>
+      </div>
+      <div class="form-group"><label>Version</label><input type="text" id="pfVersion" placeholder="v1.0"></div>
+      <button type="submit" class="btn btn-primary btn-block">Save Software</button>
+    </form>
+  </div>
+</div>
+
+<script type="module">
+/* ============================================================
+   FIREBASE SETUP (Modular SDK via CDN)
+   Replace firebaseConfig with your own project's config if needed.
+   Firestore collections used: "software", "orders", "users"
+============================================================ */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {
+  getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc,
+  onSnapshot, query, orderBy, serverTimestamp, setDoc, getDoc
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  onAuthStateChanged, signOut, updateProfile
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBz1SDXnmvZ6FL8Ozz--jSxoMmMNzd87NE",
+  authDomain: "color-37862.firebaseapp.com",
+  databaseURL: "https://color-37862-default-rtdb.firebaseio.com",
+  projectId: "color-37862",
+  storageBucket: "color-37862.firebasestorage.app",
+  messagingSenderId: "975036313519",
+  appId: "1:975036313519:web:ac154a838eba495c99495a",
+  measurementId: "G-814DG305GB"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getAuth ? getFirestore(app) : null;
+const auth = getAuth(app);
+
+// --- EDIT THIS to whichever email should have admin rights ---
+const ADMIN_EMAIL = "admin@vyomasoftware.example";
+
+/* ============================================================
+   STATE
+============================================================ */
+let ALL_PRODUCTS = [];   // live cache of Firestore "software" docs
+let ALL_ORDERS = [];     // live cache of Firestore "orders" docs
+let currentUser = null;
+let isAdmin = false;
+let authMode = "login";  // "login" | "register"
+
+// Sample fallback data so the storefront never looks empty before the
+// admin has added real products in Firestore. Real Firestore data
+// (via onSnapshot below) always takes priority once it loads.
+const SAMPLE_PRODUCTS = [
+  { id:"sample-1", name:"GST Billing Pro", category:"Business Software",
+    description:"Dukaan aur distributor ke liye GST billing software. Isse aap sirf 1 minute me GST invoice bana sakte hain, stock ka hisaab rakh sakte hain aur roz ki sale ki report dekh sakte hain. Naya user hone par bhi sikhna aasan hai.",
+    price:4999, rating:4.7,
+    image:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80",
+    demo:"#", video:"", download:"#",
+    features:["GST-compliant invoices","Inventory tracking","Multi-user access","Sales reports"],
+    tech:"HTML, JS, Firebase", version:"v3.2" },
+  { id:"sample-2", name:"School ERP Suite", category:"Education Software",
+    description:"School chalane wale logon ke liye software. Admission lena, roz ki attendance lena, fees collect karna aur report card banana — sab ek hi jagah se ho jayega. Parents bhi apna login se bachche ka progress dekh sakte hain.",
+    price:7999, rating:4.6,
+    image:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80",
+    demo:"#", video:"", download:"#",
+    features:["Attendance tracking","Online fee payment","Report card builder","Parent portal"],
+    tech:"HTML, JS, Firebase", version:"v2.0" },
+  { id:"sample-3", name:"Local News App", category:"Media Software",
+    description:"Apne shehar ya area ki news dalne ke liye ready-made app aur website. News alag category me daal sakte hain, readers ko notification bhej sakte hain aur ad lagakar paise kama sakte hain. Admin panel se news khud add/edit kar sakte hain.",
+    price:5999, rating:4.4,
+    image:"https://images.unsplash.com/photo-1495020689067-958852a7765e?w=600&q=80",
+    demo:"#", video:"", download:"#",
+    features:["Push notifications","Category feeds","Ad monetisation","Admin CMS"],
+    tech:"HTML, JS, Firebase", version:"v1.4" },
+  { id:"sample-4", name:"ShopKart Ecommerce", category:"Ecommerce",
+    description:"Apna online shopping website ek din me shuru karo. Isme product list karna, customer ka cart aur checkout, order tracking aur discount coupon — sab feature already bana hua hai. Aapko bas apne product daalne hain.",
+    price:8999, rating:4.8,
+    image:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+    demo:"#", video:"", download:"#",
+    features:["Product catalog","Cart & checkout","Order tracking","Coupon codes"],
+    tech:"HTML, JS, Firebase", version:"v4.1" },
+  { id:"sample-5", name:"Hospital Manager", category:"Healthcare",
+    description:"Chote clinic aur hospital ke liye software. Patient ka record rakhna, appointment book karna aur bill banana — sab ek dashboard se ho jata hai. Doctor aur staff ke liye alag login bhi hai.",
+    price:9999, rating:4.5,
+    image:"https://images.unsplash.com/photo-1580281658626-ee379f3cce93?w=600&q=80",
+    demo:"#", video:"", download:"#",
+    features:["Patient records","Appointment scheduling","Billing","Staff roles"],
+    tech:"HTML, JS, Firebase", version:"v2.3" },
+  { id:"sample-6", name:"Invoice Lite", category:"Business Software",
+    description:"Freelancer aur choti team ke liye simple invoice software. Isme extra jhanjhat nahi hai — bas jaldi invoice banao, PDF bhejo aur payment reminder set karo.",
+    price:1999, rating:4.3,
+    image:"https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80",
+    demo:"#", video:"", download:"#",
+    features:["PDF invoices","Client list","Payment reminders"],
+    tech:"HTML, JS, Firebase", version:"v1.0" }
+];
+
+const CATEGORY_DATA = [
+  { name:"Business Software",
+    desc:"Dukaan, shop ya company ke roz ke kaam ke liye — bill banana, GST invoice nikalna aur stock ka hisaab rakhna.",
+    items:["Billing Software","GST Invoice Software","Inventory Management"],
+    icon:'<path d="M4 4h16v16H4zM4 9h16M9 9v11"/>' },
+  { name:"Education Software",
+    desc:"School aur coaching classes ke liye — student ki attendance, fees aur report card ek jagah manage karo.",
+    items:["School Management System","Coaching Management"],
+    icon:'<path d="M2 10l10-6 10 6-10 6-10-6zM6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>' },
+  { name:"Media Software",
+    desc:"Local news dikhane ke liye app aur website — khabrein post karo, log padhein aur ad se kamai karo.",
+    items:["Local News App","News Website"],
+    icon:'<path d="M4 4h16v12H8l-4 4z"/>' },
+  { name:"Ecommerce",
+    desc:"Apna online store banane ke liye — product list karo, customer order kare aur payment online le.",
+    items:["Shopping Website","Product Selling App"],
+    icon:'<path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/>' },
+  { name:"Healthcare",
+    desc:"Clinic aur hospital ke liye — patient ka record, appointment aur billing ek software me.",
+    items:["Hospital Management"],
+    icon:'<path d="M12 4v16M4 12h16"/>' },
+];
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+function $(id){ return document.getElementById(id); }
+function scrollToId(id){ const el=$(id); if(el) el.scrollIntoView({behavior:"smooth"}); }
+function money(n){ return "₹" + Number(n||0).toLocaleString("en-IN"); }
+function starIcon(){ return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>'; }
+function checkIcon(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>'; }
+
+/* ============================================================
+   THEME TOGGLE
+============================================================ */
+(function initTheme(){
+  const saved = localStorage.getItem("vyoma-theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const theme = saved || (prefersDark ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+})();
+$("themeToggle").addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  const next = cur === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("vyoma-theme", next);
+});
+
+/* ============================================================
+   MOBILE NAV
+============================================================ */
+window.closeMobile = function(){ $("mobilePanel").classList.remove("open"); };
+$("hamburger").addEventListener("click", () => $("mobilePanel").classList.toggle("open"));
+
+/* ============================================================
+   RENDER: CATEGORIES
+============================================================ */
+function renderCategories(){
+  $("categoryGrid").innerHTML = CATEGORY_DATA.map(c => `
+    <div class="cat-card">
+      <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${c.icon}</svg></div>
+      <h3>${c.name}</h3>
+      <p style="font-size:.85rem;color:var(--text-dim);margin-bottom:12px;">${c.desc}</p>
+      <ul>${c.items.map(i=>`<li>${i}</li>`).join("")}</ul>
+    </div>
+  `).join("");
+}
+renderCategories();
+
+/* ============================================================
+   RENDER: PRODUCT GRID
+============================================================ */
+function productCardHtml(p){
+  return `
+    <div class="p-card">
+      <div class="p-thumb">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'">
+        <span class="p-cat-tag">${p.category}</span>
+      </div>
+      <div class="p-body">
+        <h3>${p.name}</h3>
+        <p class="p-desc">${p.description}</p>
+        <div class="p-meta">
+          <span class="p-price">${money(p.price)}</span>
+          <span class="p-rating">${starIcon()} ${Number(p.rating||0).toFixed(1)}</span>
+        </div>
+        <div class="p-actions">
+          <button class="btn btn-outline" onclick="openProductModal('${p.id}')">Details</button>
+          <a class="btn btn-outline" href="${p.demo||'#'}" target="_blank" rel="noopener">Live Demo</a>
+          <button class="btn btn-primary" onclick="buyNow('${p.id}')">Buy Now</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function applyFilters(){
+  const q = ($("searchInput").value || "").toLowerCase();
+  const cat = $("categoryFilter").value;
+  const priceRange = $("priceFilter").value;
+  let list = ALL_PRODUCTS.filter(p => {
+    const matchesQ = !q || p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+    const matchesCat = !cat || p.category === cat;
+    let matchesPrice = true;
+    if(priceRange){
+      const [min,max] = priceRange.split("-").map(Number);
+      matchesPrice = p.price >= min && p.price <= max;
+    }
+    return matchesQ && matchesCat && matchesPrice;
+  });
+  renderProductGrid(list);
+}
+
+function renderProductGrid(list){
+  const grid = $("productGrid");
+  if(!list.length){
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">No software matches your search. Try a different keyword or category.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(productCardHtml).join("");
+}
+
+/* Load products from Firestore in real time; fall back to samples on error/empty */
+function initProductsListener(){
+  try{
+    const q = query(collection(db, "software"), orderBy("createdDate", "desc"));
+    onSnapshot(q, (snap) => {
+      if(snap.empty){
+        ALL_PRODUCTS = SAMPLE_PRODUCTS;
+      } else {
+        ALL_PRODUCTS = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      }
+      applyFilters();
+      renderAdminProducts();
+      updateAdminStats();
+    }, (err) => {
+      console.warn("Firestore software listener failed, using sample data:", err.message);
+      ALL_PRODUCTS = SAMPLE_PRODUCTS;
+      applyFilters();
+    });
+  }catch(err){
+    console.warn("Firestore unavailable, using sample data:", err);
+    ALL_PRODUCTS = SAMPLE_PRODUCTS;
+    applyFilters();
+  }
+}
+
+/* ============================================================
+   PRODUCT DETAILS MODAL
+============================================================ */
+window.openProductModal = function(id){
+  const p = ALL_PRODUCTS.find(x => x.id === id);
+  if(!p) return;
+  const features = Array.isArray(p.features) ? p.features : (p.features||"").split(",").map(s=>s.trim()).filter(Boolean);
+  const faqs = [
+    ["Is this a one-time payment?","Yes, most listings are a single one-time license fee unless noted as a subscription."],
+    ["Do I get the source code?","Yes, full source handover is included so your team can customise it further."],
+    ["Is support included?","Every purchase includes setup support and one year of free updates."]
+  ];
+  $("productModalBody").innerHTML = `
+    <h2>${p.name}</h2>
+    <p class="modal-sub">${p.category} · v${p.version||"1.0"}</p>
+    <div class="modal-gallery">
+      <img src="${p.image}" alt="${p.name} screenshot">
+      <img src="${p.image}" alt="${p.name} screenshot 2" style="filter:hue-rotate(20deg);">
+      <img src="${p.image}" alt="${p.name} screenshot 3" style="filter:grayscale(.3);">
+    </div>
+    ${p.video ? `<div class="modal-video"><iframe src="${p.video}" title="Demo video" allowfullscreen></iframe></div>` : ""}
+    <p style="color:var(--text-dim);font-size:.92rem;">${p.description}</p>
+    <div class="modal-section-title">Key features</div>
+    <ul class="feat-list">${features.map(f=>`<li>${checkIcon()} ${f}</li>`).join("") || "<li>Feature list coming soon.</li>"}</ul>
+    <div class="modal-section-title">Technology used</div>
+    <div class="tag-list"><span class="pill">${p.tech || "HTML, JS, Firebase"}</span></div>
+    <div class="modal-section-title">FAQ</div>
+    ${faqs.map((f,i)=>`
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">${f[0]} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a">${f[1]}</div>
+      </div>`).join("")}
+    <div class="modal-price-row">
+      <span style="color:var(--text-dim);font-size:.85rem;">Total price</span>
+      <span class="amt">${money(p.price)}</span>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="buyNow('${p.id}')">Buy Now</button>
+      <a class="btn btn-teal" href="https://wa.me/919876543210?text=${encodeURIComponent('Hi, I want a demo of '+p.name)}" target="_blank" rel="noopener">Contact WhatsApp</a>
+      ${p.demo ? `<a class="btn btn-outline" href="${p.demo}" target="_blank" rel="noopener">Live Demo</a>` : ""}
+    </div>
+  `;
+  $("productModalOverlay").classList.add("open");
+};
+
+window.closeModal = function(id){ $(id).classList.remove("open"); };
+window.closeOnOverlay = function(e, id){ if(e.target.id === id) closeModal(id); };
+
+/* ============================================================
+   BUY NOW → creates an order in Firestore (requires login)
+============================================================ */
+window.buyNow = async function(productId){
+  const p = ALL_PRODUCTS.find(x => x.id === productId);
+  if(!p) return;
+  if(!currentUser){
+    openAuthModal();
+    return;
+  }
+  try{
+    await addDoc(collection(db, "orders"), {
+      customerName: currentUser.displayName || currentUser.email,
+      email: currentUser.email,
+      softwareName: p.name,
+      price: p.price,
+      paymentStatus: "Pending",
+      date: serverTimestamp(),
+      transactionId: "TXN" + Date.now()
+    });
+    closeModal("productModalOverlay");
+    alert("Order placed! Complete payment via UPI/Razorpay and our team will activate your license shortly. Check your dashboard for order status.");
+    scrollToId("dashboard");
+  }catch(err){
+    alert("Could not place order: " + err.message);
+  }
+};
+
+/* ============================================================
+   AUTH: LOGIN / REGISTER MODAL
+============================================================ */
+window.openAuthModal = function(){
+  $("authModalOverlay").classList.add("open");
+};
+window.toggleAuthMode = function(e){
+  e.preventDefault();
+  authMode = authMode === "login" ? "register" : "login";
+  updateAuthUI();
+};
+function updateAuthUI(){
+  const isLogin = authMode === "login";
+  $("authTitle").textContent = isLogin ? "Welcome back" : "Create your account";
+  $("authSub").textContent = isLogin ? "Log in to view your orders and licenses" : "Register to buy software and track your orders";
+  $("nameFieldGroup").classList.toggle("hide", isLogin);
+  $("authSubmitBtn").textContent = isLogin ? "Log In" : "Create Account";
+  $("authSwitchText").innerHTML = isLogin
+    ? `Don't have an account? <a href="#" onclick="toggleAuthMode(event)">Sign up</a>`
+    : `Already have an account? <a href="#" onclick="toggleAuthMode(event)">Log in</a>`;
+  $("authMsg").classList.remove("show");
+}
+function showAuthMsg(text, ok){
+  const el = $("authMsg");
+  el.textContent = text;
+  el.className = "form-msg show " + (ok ? "ok" : "err");
+}
+
+window.handleAuthSubmit = async function(e){
+  e.preventDefault();
+  const email = $("authEmail").value.trim();
+  const password = $("authPassword").value;
+  const name = $("authName").value.trim();
+  try{
+    if(authMode === "register"){
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      if(name) await updateProfile(cred.user, { displayName: name });
+      await setDoc(doc(db, "users", cred.user.uid), {
+        name: name || email, email, role: email === ADMIN_EMAIL ? "admin" : "customer"
+      });
+      showAuthMsg("Account created! Logging you in…", true);
+    } else {
+      await signInWithEmailAndPassword(auth, email, password);
+      showAuthMsg("Logged in successfully.", true);
+    }
+    setTimeout(() => closeModal("authModalOverlay"), 600);
+  }catch(err){
+    showAuthMsg(err.message.replace("Firebase: ",""), false);
+  }
+};
+
+window.logout = function(){ signOut(auth); };
+
+/* React to auth state changes: toggle nav, dashboard, admin panel */
+onAuthStateChanged(auth, async (user) => {
+  currentUser = user;
+  if(user){
+    $("navLoginBtn").classList.add("hide");
+    $("navDashBtn").classList.remove("hide");
+    $("dashboard").classList.remove("dash-hidden");
+    $("custWelcome").textContent = "Welcome back, " + (user.displayName || user.email.split("@")[0]);
+    isAdmin = user.email === ADMIN_EMAIL;
+    if(isAdmin){
+      $("adminPanel").classList.remove("dash-hidden");
+      updateAdminStats();
+      renderAdminProducts();
+    } else {
+      $("adminPanel").classList.add("dash-hidden");
+    }
+    renderCustomerOrders();
+  } else {
+    $("navLoginBtn").classList.remove("hide");
+    $("navDashBtn").classList.add("hide");
+    $("dashboard").classList.add("dash-hidden");
+    $("adminPanel").classList.add("dash-hidden");
+    isAdmin = false;
+  }
+});
+
+/* ============================================================
+   ORDERS: live listener + customer/admin rendering
+============================================================ */
+function initOrdersListener(){
+  try{
+    const q = query(collection(db, "orders"), orderBy("date", "desc"));
+    onSnapshot(q, (snap) => {
+      ALL_ORDERS = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderCustomerOrders();
+      renderAdminOrders();
+      updateAdminStats();
+    }, (err) => console.warn("Orders listener failed:", err.message));
+  }catch(err){ console.warn("Orders unavailable:", err); }
+}
+
+function fmtDate(ts){
+  try{
+    if(ts && ts.toDate) return ts.toDate().toLocaleDateString("en-IN");
+    return "—";
+  }catch{ return "—"; }
+}
+
+function renderCustomerOrders(){
+  if(!currentUser) return;
+  const mine = ALL_ORDERS.filter(o => o.email === currentUser.email);
+  const body = $("custOrdersBody");
+  if(!mine.length){
+    body.innerHTML = `<tr><td colspan="5" style="color:var(--text-dim);">No orders yet — browse the marketplace above.</td></tr>`;
+    return;
+  }
+  body.innerHTML = mine.map(o => `
+    <tr>
+      <td>${o.softwareName}</td>
+      <td>${fmtDate(o.date)}</td>
+      <td><span class="status-badge ${o.paymentStatus==='Paid'?'status-paid':'status-pending'}">${o.paymentStatus}</span></td>
+      <td>${o.paymentStatus==='Paid' ? `<a href="#" style="color:var(--teal);font-weight:600;">Download</a>` : "—"}</td>
+      <td style="font-family:var(--font-mono);font-size:.8rem;">${o.paymentStatus==='Paid' ? "VYM-"+o.id.slice(0,8).toUpperCase() : "—"}</td>
+    </tr>`).join("");
+}
+
+function renderAdminOrders(){
+  const body = $("adminOrdersBody");
+  if(!ALL_ORDERS.length){ body.innerHTML = `<tr><td colspan="5" style="color:var(--text-dim);">No orders yet.</td></tr>`; return; }
+  body.innerHTML = ALL_ORDERS.map(o => `
+    <tr>
+      <td>${o.customerName||o.email}</td>
+      <td>${o.softwareName}</td>
+      <td><span class="status-badge ${o.paymentStatus==='Paid'?'status-paid':'status-pending'}">${o.paymentStatus}</span></td>
+      <td>${fmtDate(o.date)}</td>
+      <td style="font-family:var(--font-mono);font-size:.78rem;">${o.transactionId||"—"}</td>
+    </tr>`).join("");
+}
+
+/* ============================================================
+   ADMIN: DASHBOARD STATS
+============================================================ */
+async function updateAdminStats(){
+  if(!isAdmin) return;
+  $("statProducts").textContent = ALL_PRODUCTS.length;
+  $("statOrders").textContent = ALL_ORDERS.length;
+  const revenue = ALL_ORDERS.filter(o=>o.paymentStatus==='Paid').reduce((s,o)=>s+Number(o.price||0),0);
+  $("statRevenue").textContent = money(revenue);
+  const uniqueCustomers = new Set(ALL_ORDERS.map(o=>o.email)).size;
+  $("statCustomers").textContent = uniqueCustomers;
+}
+
+window.switchAdminTab = function(tab){
+  document.querySelectorAll(".admin-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
+  $("adminTabProducts").classList.toggle("hide", tab !== "products");
+  $("adminTabOrders").classList.toggle("hide", tab !== "orders");
+};
+
+/* ============================================================
+   ADMIN: SOFTWARE MANAGEMENT (Add / Edit / Delete)
+============================================================ */
+function renderAdminProducts(){
+  if(!isAdmin) return;
+  const body = $("adminProductsBody");
+  body.innerHTML = ALL_PRODUCTS.map(p => `
+    <tr>
+      <td><img src="${p.image}" alt="${p.name}" style="width:44px;height:44px;object-fit:cover;border-radius:6px;" onerror="this.style.opacity=0"></td>
+      <td>${p.name}</td>
+      <td>${p.category}</td>
+      <td style="font-family:var(--font-mono);">${money(p.price)}</td>
+      <td>${Number(p.rating||0).toFixed(1)} ${starIcon()}</td>
+      <td class="row-actions">
+        <button class="icon-btn" onclick='openProductForm(${JSON.stringify(p).replace(/'/g,"&apos;")})' aria-label="Edit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h4L18 10l-4-4L4 16z"/></svg>
+        </button>
+        <button class="icon-btn" onclick="deleteProduct('${p.id}')" aria-label="Delete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
+        </button>
+      </td>
+    </tr>`).join("");
+}
+
+window.openProductForm = function(product){
+  $("productForm").reset();
+  if(product && product.id){
+    $("pfTitle").textContent = "Edit Software";
+    $("pfId").value = product.id;
+    $("pfName").value = product.name || "";
+    $("pfCategory").value = product.category || "Business Software";
+    $("pfDescription").value = product.description || "";
+    $("pfPrice").value = product.price || 0;
+    $("pfRating").value = product.rating || 4.5;
+    $("pfImage").value = product.image || "";
+    $("pfVideo").value = product.video || "";
+    $("pfDemo").value = product.demo || "";
+    $("pfDownload").value = product.download || "";
+    $("pfFeatures").value = Array.isArray(product.features) ? product.features.join(", ") : (product.features||"");
+    $("pfTech").value = product.tech || "";
+    $("pfVersion").value = product.version || "";
+  } else {
+    $("pfTitle").textContent = "Add New Software";
+    $("pfId").value = "";
+  }
+  $("productFormOverlay").classList.add("open");
+};
+
+window.handleProductFormSubmit = async function(e){
+  e.preventDefault();
+  const id = $("pfId").value;
+  const data = {
+    name: $("pfName").value.trim(),
+    category: $("pfCategory").value,
+    description: $("pfDescription").value.trim(),
+    price: Number($("pfPrice").value),
+    rating: Number($("pfRating").value),
+    image: $("pfImage").value.trim(),
+    video: $("pfVideo").value.trim(),
+    demo: $("pfDemo").value.trim(),
+    download: $("pfDownload").value.trim(),
+    features: $("pfFeatures").value.split(",").map(s=>s.trim()).filter(Boolean),
+    tech: $("pfTech").value.trim(),
+    version: $("pfVersion").value.trim(),
+  };
+  try{
+    if(id){
+      await updateDoc(doc(db, "software", id), data);
+    } else {
+      await addDoc(collection(db, "software"), { ...data, createdDate: serverTimestamp() });
+    }
+    closeModal("productFormOverlay");
+  }catch(err){
+    $("pfMsg").textContent = err.message;
+    $("pfMsg").className = "form-msg show err";
+  }
+};
+
+window.deleteProduct = async function(id){
+  if(!confirm("Delete this software listing? This cannot be undone.")) return;
+  try{ await deleteDoc(doc(db, "software", id)); }
+  catch(err){ alert("Could not delete: " + err.message); }
+};
+
+/* ============================================================
+   INIT
+============================================================ */
+renderProductGrid(SAMPLE_PRODUCTS); // instant paint before Firestore responds
+ALL_PRODUCTS = SAMPLE_PRODUCTS;
+initProductsListener();
+initOrdersListener();
+updateAuthUI();
+
+// Highlight active nav link on scroll
+const sections = ["home","software","categories","pricing","blog","contact"];
+window.addEventListener("scroll", () => {
+  const pos = window.scrollY + 120;
+  let current = "home";
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.offsetTop <= pos) current = id;
+  });
+  document.querySelectorAll(".nav-links a").forEach(a => {
+    a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+  });
+});
+</script>
+</body>
+</html>
