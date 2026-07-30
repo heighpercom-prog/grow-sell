@@ -169,7 +169,7 @@
     <span class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-semibold text-slate-300 mb-6">
       <i class="fa-solid fa-sparkles text-neon-cyan"></i> Premium Growth Partner for Modern Brands
     </span>
-    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-white">
+    <h1 id="heroHeadline" class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-white">
       Video Ads That Convert.<br class="hidden sm:block">
       <span class="grad-text">Scale Your Business,</span> Not Your Costs.
     </h1>
@@ -183,10 +183,10 @@
   </div>
 
   <!-- Video Banner -->
-  <div class="relative max-w-3xl mx-auto mt-14">
+  <div id="heroVideoOuterWrap" class="relative max-w-3xl mx-auto mt-14">
     <div class="glass-strong rounded-3xl p-3 shadow-glowPurple">
-      <div class="rounded-2xl overflow-hidden aspect-video bg-black">
-        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Grow Sell Agency Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div id="heroVideoWrap" class="rounded-2xl overflow-hidden aspect-video bg-black">
+        <iframe id="heroVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Grow Sell Agency Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -199,48 +199,8 @@
     <p class="text-slate-400 mt-2 text-sm">Wide, horizontal, glassmorphic micro-banners built for performance marketing.</p>
   </div>
 
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
-
-    <div class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
-      <div class="icon-orb w-14 h-14 rounded-xl flex items-center justify-center shrink-0">
-        <i class="fa-solid fa-clapperboard text-neon-cyan text-xl"></i>
-      </div>
-      <div>
-        <h3 class="font-display font-semibold text-white text-base">Promotional Video Ads</h3>
-        <p class="text-slate-400 text-xs mt-1 leading-relaxed">High-quality promotional video ads that convert viewers into customers.</p>
-      </div>
-    </div>
-
-    <div class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
-      <div class="icon-orb w-14 h-14 rounded-xl flex items-center justify-center shrink-0">
-        <i class="fa-solid fa-wand-magic-sparkles text-neon-purple text-xl"></i>
-      </div>
-      <div>
-        <h3 class="font-display font-semibold text-white text-base">AI Video Production</h3>
-        <p class="text-slate-400 text-xs mt-1 leading-relaxed">AI-driven creative pipelines for fast, scalable video production.</p>
-      </div>
-    </div>
-
-    <div class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
-      <div class="icon-orb w-14 h-14 rounded-xl flex items-center justify-center shrink-0">
-        <i class="fa-brands fa-meta text-neon-blue text-xl"></i>
-      </div>
-      <div>
-        <h3 class="font-display font-semibold text-white text-base">Meta Ads Management</h3>
-        <p class="text-slate-400 text-xs mt-1 leading-relaxed">Full-cycle Facebook &amp; Instagram ad strategy and optimization.</p>
-      </div>
-    </div>
-
-    <div class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
-      <div class="icon-orb w-14 h-14 rounded-xl flex items-center justify-center shrink-0">
-        <i class="fa-brands fa-google text-neon-pink text-xl"></i>
-      </div>
-      <div>
-        <h3 class="font-display font-semibold text-white text-base">Google Ads Service</h3>
-        <p class="text-slate-400 text-xs mt-1 leading-relaxed">Search, display and performance campaigns engineered for ROI.</p>
-      </div>
-    </div>
-
+  <div id="servicesGrid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <!-- injected by JS (falls back to defaults, overridden by Firestore siteConfig) -->
   </div>
 </section>
 
@@ -251,12 +211,12 @@
     <p class="text-slate-400 mt-2 text-sm">High-fidelity, ready-to-launch mobile app products.</p>
   </div>
 
-  <div id="appsGrid" class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <div id="appsGrid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- injected by JS -->
   </div>
 
-  <div class="text-center mt-10">
-    <button class="glass px-6 py-2.5 rounded-full text-sm font-semibold text-slate-200 hover:border-neon-blue/60 transition">Show More <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></button>
+  <div id="appsShowMoreWrap" class="hidden text-center mt-10">
+    <button id="appsShowMoreBtn" class="glass px-6 py-2.5 rounded-full text-sm font-semibold text-slate-200 hover:border-neon-blue/60 transition">Show More <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></button>
   </div>
 </section>
 
@@ -304,6 +264,7 @@
   <div class="max-w-5xl mx-auto glass-strong rounded-3xl overflow-hidden">
     <div class="aspect-[16/7] w-full grayscale-[30%] opacity-90">
       <iframe
+        id="mapIframe"
         class="w-full h-full border-0"
         loading="lazy"
         allowfullscreen
@@ -313,13 +274,13 @@
     </div>
     <div class="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm">
       <div class="flex items-center gap-2 text-slate-300">
-        <i class="fa-solid fa-location-dot text-neon-pink"></i> Rourkela, Odisha, India
+        <i class="fa-solid fa-location-dot text-neon-pink"></i> <span id="contactAddress">Rourkela, Odisha, India</span>
       </div>
       <div class="flex items-center gap-2 text-slate-300">
-        <i class="fa-solid fa-phone text-neon-cyan"></i> +91 91772 57789
+        <i class="fa-solid fa-phone text-neon-cyan"></i> <span id="contactPhone">+91 91772 57789</span>
       </div>
       <div class="flex items-center gap-2 text-slate-300">
-        <i class="fa-solid fa-envelope text-neon-purple"></i> hello@growsellagency.com
+        <i class="fa-solid fa-envelope text-neon-purple"></i> <span id="contactEmail">hello@growsellagency.com</span>
       </div>
     </div>
   </div>
@@ -356,9 +317,9 @@
     <div>
       <h4 class="font-display font-semibold text-white mb-4 text-sm">Help Desk</h4>
       <ul class="space-y-2.5 text-sm text-slate-400">
-        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-neon-cyan w-4"></i> +91 91772 57789</li>
-        <li class="flex items-center gap-2"><i class="fa-solid fa-headset text-neon-purple w-4"></i> +91 98655 65559</li>
-        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-neon-pink w-4"></i> support@growsellagency.com</li>
+        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-neon-cyan w-4"></i> <span id="footerPhone">+91 91772 57789</span></li>
+        <li class="flex items-center gap-2"><i class="fa-solid fa-headset text-neon-purple w-4"></i> <span id="footerHelpline">+91 98655 65559</span></li>
+        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-neon-pink w-4"></i> <span id="footerEmail">support@growsellagency.com</span></li>
       </ul>
     </div>
 
@@ -405,9 +366,8 @@
 <!-- ================= FIREBASE + APP LOGIC ================= -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
   import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import { getFirestore, collection, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, addDoc, serverTimestamp, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBz1SDXnmvZ6FL8Ozz--jSxoMmMNzd87NE",
@@ -421,15 +381,23 @@
   };
 
   const app = initializeApp(firebaseConfig);
-  const db = getAuth ? getFirestore(app) : null;
+  const db = getFirestore(app);
   const auth = getAuth(app);
-  isSupported().then((ok) => { if (ok) getAnalytics(app); }).catch(() => {});
+
+  // Expose immediately so product/config loaders never see it as undefined,
+  // even if the optional analytics import below fails or is blocked.
+  window.__gsa = { db, addDoc, collection, serverTimestamp, getDocs, doc, getDoc };
+  window.dispatchEvent(new Event('gsa-ready'));
 
   onAuthStateChanged(auth, (user) => {
     if (!user) signInAnonymously(auth).catch((e) => console.warn("Anonymous auth failed:", e.message));
   });
 
-  window.__gsa = { db, addDoc, collection, serverTimestamp, getDocs };
+  // Analytics is optional — load it defensively so a blocked/failed request
+  // (common with ad-blockers) never breaks the rest of the app.
+  import("https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js")
+    .then(({ getAnalytics, isSupported }) => isSupported().then((ok) => { if (ok) getAnalytics(app); }))
+    .catch((e) => console.warn("Analytics not loaded (safe to ignore):", e.message));
 </script>
 
 <script>
@@ -461,6 +429,13 @@
 
   const BRANDS = ['Google', 'Stroux', 'Microsoft', 'Cadonne', 'Vova', 'Nimbus', 'Orbex', 'Trellis'];
 
+  const DEFAULT_SERVICES = [
+    { title: 'Promotional Video Ads', desc: 'High-quality promotional video ads that convert viewers into customers.', icon: 'fa-solid fa-clapperboard', color: 'text-neon-cyan' },
+    { title: 'AI Video Production', desc: 'AI-driven creative pipelines for fast, scalable video production.', icon: 'fa-solid fa-wand-magic-sparkles', color: 'text-neon-purple' },
+    { title: 'Meta Ads Management', desc: 'Full-cycle Facebook & Instagram ad strategy and optimization.', icon: 'fa-brands fa-meta', color: 'text-neon-blue' },
+    { title: 'Google Ads Service', desc: 'Search, display and performance campaigns engineered for ROI.', icon: 'fa-brands fa-google', color: 'text-neon-pink' },
+  ];
+
   let PRODUCTS = { apps: FALLBACK_APPS, websites: FALLBACK_WEBSITES };
 
   // ---------- Cart ----------
@@ -488,12 +463,43 @@
     return html;
   }
 
+  const SERVICE_ICONS = ['fa-solid fa-clapperboard text-neon-cyan', 'fa-solid fa-wand-magic-sparkles text-neon-purple', 'fa-brands fa-meta text-neon-blue', 'fa-brands fa-google text-neon-pink'];
+
+  function renderServices(services) {
+    const grid = document.getElementById('servicesGrid');
+    grid.innerHTML = services.map((s, i) => `
+      <div class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
+        <div class="icon-orb w-14 h-14 rounded-xl flex items-center justify-center shrink-0">
+          <i class="${s.icon || SERVICE_ICONS[i % SERVICE_ICONS.length]} text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-white text-base">${s.title || ''}</h3>
+          <p class="text-slate-400 text-xs mt-1 leading-relaxed">${s.desc || ''}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function productImageStyle(image) {
+    if (!image) return 'background:linear-gradient(135deg,#334155,#1E293B)';
+    if (image.startsWith('http')) return `background-image:url('${image}');background-size:cover;background-position:center`;
+    return `background:${image}`;
+  }
+
+  const APPS_PAGE_SIZE = 6; // 3 columns x 2 rows initially
+  let appsExpanded = false;
+
   function renderApps() {
     const grid = document.getElementById('appsGrid');
-    grid.innerHTML = PRODUCTS.apps.map(p => `
+    const showMoreWrap = document.getElementById('appsShowMoreWrap');
+    const showMoreBtn = document.getElementById('appsShowMoreBtn');
+
+    const visibleApps = appsExpanded ? PRODUCTS.apps : PRODUCTS.apps.slice(0, APPS_PAGE_SIZE);
+
+    grid.innerHTML = visibleApps.map(p => `
       <div class="glass card-hover rounded-2xl overflow-hidden flex flex-col">
-        <div class="h-48 w-full flex items-center justify-center" style="background:${p.image}">
-          <i class="fa-solid fa-mobile-screen text-white/70 text-5xl"></i>
+        <div class="h-48 w-full flex items-center justify-center" style="${productImageStyle(p.image)}">
+          ${p.image && p.image.startsWith('http') ? '' : '<i class="fa-solid fa-mobile-screen text-white/70 text-5xl"></i>'}
         </div>
         <div class="p-5 flex-1 flex flex-col">
           <h3 class="font-display font-semibold text-white text-base">${p.title}</h3>
@@ -510,14 +516,30 @@
       </div>
     `).join('');
     attachProductEvents();
+
+    if (PRODUCTS.apps.length > APPS_PAGE_SIZE) {
+      showMoreWrap.classList.remove('hidden');
+      showMoreBtn.innerHTML = appsExpanded
+        ? 'Show Less <i class="fa-solid fa-arrow-up ml-1 text-xs"></i>'
+        : 'Show More <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>';
+    } else {
+      showMoreWrap.classList.add('hidden');
+    }
   }
+
+  document.getElementById('appsShowMoreBtn').addEventListener('click', () => {
+    appsExpanded = !appsExpanded;
+    renderApps();
+    if (!appsExpanded) document.getElementById('apps').scrollIntoView({ behavior: 'smooth' });
+  });
+
 
   function renderWebsites() {
     const grid = document.getElementById('websitesGrid');
     grid.innerHTML = PRODUCTS.websites.map(p => `
       <div class="glass card-hover rounded-2xl overflow-hidden flex flex-col">
-        <div class="h-36 w-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-          <i class="fa-solid fa-display text-slate-500 text-4xl"></i>
+        <div class="h-36 w-full flex items-center justify-center" style="${p.image ? productImageStyle(p.image) : 'background:linear-gradient(135deg,#1E293B,#0F172A)'}">
+          ${p.image && p.image.startsWith('http') ? '' : '<i class="fa-solid fa-display text-slate-500 text-4xl"></i>'}
         </div>
         <div class="p-5 flex-1 flex flex-col">
           <h3 class="font-display font-semibold text-white text-sm">${p.title}</h3>
@@ -556,26 +578,122 @@
     });
   }
 
-  function renderTestimonials() {
-    const list = [...TESTIMONIALS, ...TESTIMONIALS]; // duplicate for infinite loop
-    document.getElementById('testimonialTrack').innerHTML = list.map(t => `
-      <div class="glass-strong rounded-2xl w-56 shrink-0 overflow-hidden">
-        <div class="aspect-[9/16] bg-black">
-          <iframe class="w-full h-full" src="${t.src}" title="${t.name}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        <div class="p-3">
-          <p class="text-xs font-semibold text-white">${t.tag}</p>
-          <p class="text-[11px] text-slate-400">${t.name}</p>
-        </div>
-      </div>
-    `).join('');
+  // Converts a raw Instagram post/reel link or YouTube watch link into a working
+  // embed URL. Defensive: normalizes even if bad data was saved previously.
+  function toEmbedUrl(rawUrl) {
+    if (!rawUrl) return rawUrl;
+    let url = rawUrl.trim();
+
+    if (url.includes('instagram.com')) {
+      url = url.split('?')[0];
+      if (!url.endsWith('/')) url += '/';
+      if (!url.endsWith('embed/')) url += 'embed/';
+      return url;
+    }
+
+    const ytMatch = url.match(/[?&]v=([^&]+)/);
+    if (url.includes('youtube.com/watch') && ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
+
+    const ytShort = url.match(/youtu\.be\/([^?&/]+)/);
+    if (ytShort) return `https://www.youtube.com/embed/${ytShort[1]}`;
+
+    return url;
   }
 
-  function renderLogos() {
-    const list = [...BRANDS, ...BRANDS];
-    document.getElementById('logoTrack').innerHTML = list.map(b => `
-      <span class="text-slate-500 grayscale hover:grayscale-0 hover:text-white transition font-display font-semibold text-xl whitespace-nowrap">${b}</span>
-    `).join('');
+  function applyHeroVideo(rawUrl) {
+    const outerWrap = document.getElementById('heroVideoOuterWrap');
+    const wrap = document.getElementById('heroVideoWrap');
+    const iframe = document.getElementById('heroVideoIframe');
+
+    if (!rawUrl) {
+      // Admin removed the video — hide the banner entirely instead of showing a broken frame.
+      outerWrap.classList.add('hidden');
+      return;
+    }
+    outerWrap.classList.remove('hidden');
+
+    const embedUrl = toEmbedUrl(rawUrl);
+    const isInstagram = embedUrl.includes('instagram.com');
+    wrap.classList.toggle('aspect-video', !isInstagram);
+    wrap.classList.toggle('aspect-square', isInstagram);
+    iframe.src = embedUrl;
+  }
+
+  function renderTestimonials(items) {
+    const source = items && items.length ? items : TESTIMONIALS;
+    const list = [...source, ...source]; // duplicate for infinite loop
+    document.getElementById('testimonialTrack').innerHTML = list.map(t => {
+      const embedUrl = toEmbedUrl(t.src || t.url);
+      const isInstagram = embedUrl.includes('instagram.com');
+      return `
+      <div class="glass-strong rounded-2xl w-56 shrink-0 overflow-hidden">
+        <div class="${isInstagram ? 'aspect-square' : 'aspect-[9/16]'} bg-black">
+          <iframe class="w-full h-full" src="${embedUrl}" title="${t.name || t.tag || 'Client video'}" frameborder="0" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="p-3">
+          <p class="text-xs font-semibold text-white">${t.tag || t.name || 'Client Video'}</p>
+          <p class="text-[11px] text-slate-400">${t.name || ''}</p>
+        </div>
+      </div>
+    `;
+    }).join('');
+  }
+
+  function renderLogos(items) {
+    const source = items && items.length ? items : BRANDS.map(b => ({ name: b, url: null }));
+    const list = [...source, ...source];
+    document.getElementById('logoTrack').innerHTML = list.map(b => b.url
+      ? `<img src="${b.url}" alt="${b.name || 'Brand'}" class="h-8 grayscale hover:grayscale-0 transition opacity-70 hover:opacity-100" title="${b.name || ''}">`
+      : `<span class="text-slate-500 grayscale hover:grayscale-0 hover:text-white transition font-display font-semibold text-xl whitespace-nowrap">${b.name}</span>`
+    ).join('');
+  }
+
+  // ---------- Live site config (banner / services / contact) ----------
+  async function loadSiteConfig() {
+    try {
+      const { db, doc, getDoc } = window.__gsa;
+      const snap = await getDoc(doc(db, 'siteConfig', 'main'));
+      if (!snap.exists()) { renderServices(DEFAULT_SERVICES); return; }
+      const cfg = snap.data();
+
+      if (cfg.heroVideoUrl !== undefined) applyHeroVideo(cfg.heroVideoUrl);
+      if (cfg.heroHeadline) document.getElementById('heroHeadline').textContent = cfg.heroHeadline;
+
+      renderServices(Array.isArray(cfg.services) && cfg.services.length ? cfg.services : DEFAULT_SERVICES);
+
+      if (cfg.address) {
+        document.getElementById('contactAddress').textContent = cfg.address;
+        document.getElementById('mapIframe').src = `https://www.google.com/maps?q=${encodeURIComponent(cfg.address)}&output=embed`;
+      }
+      if (cfg.phone) {
+        document.getElementById('contactPhone').textContent = cfg.phone;
+        document.getElementById('footerPhone').textContent = cfg.phone;
+      }
+      if (cfg.helpline) document.getElementById('footerHelpline').textContent = cfg.helpline;
+      if (cfg.email) {
+        document.getElementById('contactEmail').textContent = cfg.email;
+        document.getElementById('footerEmail').textContent = cfg.email;
+      }
+    } catch (err) {
+      console.warn('Using fallback site config:', err.message);
+      renderServices(DEFAULT_SERVICES);
+    }
+  }
+
+  // ---------- Live portfolio (testimonial videos / brand logos) ----------
+  async function loadPortfolio() {
+    try {
+      const { db, doc, getDoc } = window.__gsa;
+      const snap = await getDoc(doc(db, 'siteConfig', 'portfolio'));
+      if (!snap.exists()) { renderTestimonials(); renderLogos(); return; }
+      const data = snap.data();
+      renderTestimonials(data.videos);
+      renderLogos(data.logos);
+    } catch (err) {
+      console.warn('Using fallback portfolio data:', err.message);
+      renderTestimonials();
+      renderLogos();
+    }
   }
 
   // ---------- Checkout Modal ----------
@@ -658,13 +776,27 @@
   }
 
   // ---------- Init ----------
+  function loadLiveData() {
+    loadProducts();     // live products from Firestore 'products' collection
+    loadSiteConfig();   // live hero video/headline/services/contact from siteConfig/main
+    loadPortfolio();    // live testimonial videos/logos from siteConfig/portfolio
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     renderApps();
     renderWebsites();
+    renderServices(DEFAULT_SERVICES);
     renderTestimonials();
     renderLogos();
-    setTimeout(loadProducts, 300); // attempt live Firestore fetch, replaces fallback render if available
+
+    if (window.__gsa) {
+      loadLiveData(); // Firebase module already finished (fast network)
+    } else {
+      window.addEventListener('gsa-ready', loadLiveData, { once: true });
+      // Safety net in case the event fires before this listener attaches
+      setTimeout(() => { if (window.__gsa) loadLiveData(); }, 1500);
+    }
   });
 </script>
 
